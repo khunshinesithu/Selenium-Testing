@@ -13,7 +13,7 @@ public class EnabledDisabled {
         driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_1")).click();
         //check if the return date is enabled
         // Assert.assertTrue(driver.findElement(By.name("ctl00$mainContent$view_date2")).isEnabled());
-        if(driver.findElement(By.id("Div1")).getAttribute("style").contains("1"))
+        if(driver.findElement(By.id("Div1")).getDomAttribute("style").contains("1"))
         {
             System.out.println("it's enabled");
             Assert.assertTrue(true);
@@ -25,7 +25,7 @@ public class EnabledDisabled {
 
         //select one way radio button
         driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_0")).click();
-        if(driver.findElement(By.id("Div1")).getAttribute("style").contains("0.5"))
+        if(driver.findElement(By.id("Div1")).getDomAttribute("style").contains("0.5"))
         {
             System.out.println("it's disabled");
             Assert.assertTrue(true);
