@@ -10,12 +10,12 @@ public class Checkbox {
 
         // Check the checkbox
        
-       Assert.assertFalse(driver.findElement(By.id("ctl00_mainContent_chk_friendsandfamily")).isSelected());
-       driver.findElement(By.id("ctl00_mainContent_chk_friendsandfamily")).click();
-       Assert.assertTrue(driver.findElement(By.id("ctl00_mainContent_chk_friendsandfamily")).isSelected());
-       System.out.println(driver.findElements(By.xpath("//input[@type='checkbox']")).size());
-       Assert.assertEquals(driver.findElements(By.xpath("//input[@type='checkbox']")).size(), 6);
-       Thread.sleep(2000);
-       driver.quit();
+        Assert.assertFalse(driver.findElement(By.id("ctl00_mainContent_chk_friendsandfamily")).isSelected());
+        driver.findElement(By.id("ctl00_mainContent_chk_friendsandfamily")).click();
+        Assert.assertTrue(driver.findElement(By.id("ctl00_mainContent_chk_friendsandfamily")).isSelected());
+        System.out.println(driver.findElements(By.xpath("//input[@type='checkbox']")).size());
+        Assert.assertEquals(driver.findElements(By.xpath("//input[@type='checkbox']")).size(), 6);
+        Thread.sleep(2000);
+        driver.quit();
     }
 }
