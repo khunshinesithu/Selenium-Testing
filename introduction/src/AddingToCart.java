@@ -6,28 +6,45 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddingToCart {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
+
+        //implicit wait
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+        //explicit wait
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+        //things to buy
         String[] itemsNeedeed = {"Cucumber","Brocolli","Beetroot"};
         
+        //add items to cart
         addItems(driver, itemsNeedeed);
+
         //click on cart button
         driver.findElement(By.xpath("//a[@class='cart-icon']")).click();
+
         //click on proceed to checkout button
         driver.findElement(By.xpath("//button[contains(text(),'PROCEED TO CHECKOUT')]")).click();
+
         //enter promo code
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input.promoCode")));
         driver.findElement(By.cssSelector("input.promoCode")).sendKeys("rahulshettyacademy");
         
         //click on apply button
         driver.findElement(By.xpath("//button[@class='promoBtn']")).click();
         
         //check the promo code message
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='promoInfo']")));
+
         System.out.println(driver.findElement(By.xpath("//span[@class='promoInfo']")).getText());
-        //place order
+
+        //click place order button
         driver.findElement(By.xpath("//button[contains(text(),'Place Order')]")).click();
     }
 
