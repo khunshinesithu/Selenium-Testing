@@ -23,7 +23,12 @@ public class FluentWaitTest {
 
         WebElement element = wait.until(new Function<WebDriver, WebElement>() {
             public WebElement apply(WebDriver driver) {
-                return driver.findElement(By.cssSelector("div[id='finish'] h4"));
+                WebElement element = driver.findElement(By.cssSelector("div[id='finish'] h4"));
+                if(element.isDisplayed()) {
+                    return element;
+                } else {
+                    return null;
+                }
             }
         });
 
